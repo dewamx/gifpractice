@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>gif</title>
+</head>
+<body>
+<button data-search="cat">CAT BUTTON</button>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script type="text/javascript">
+$('button').on('click', function(){
+    var x = $(this).data('search');
+
+    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + x + "&api_key=ynCvPY4znguWPV0F2AKhzw29ycGj1SBh&limit=1"
+
+    $.ajax({url: queryURL, method: 'GET'})
+        .done(function (response){
+            for(var i = 0; i < response.data.length; i++);
+            $('body').append("<img src='" + response.data[0].images.downsized.url + "'>");
+        })
+
+})
+
+
+
+
+
+</script>
+</body>
+</html>
